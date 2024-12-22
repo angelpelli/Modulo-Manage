@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+      <!-- Vista de arbol -->
+      <record model="ir.ui.view" id="vista_manageangelpelli_technology_tree">
+        <field name="name">vista_manageangelpelli_technology_tree</field>
+        <field name="model">manageangelpelli.technology</field>
+        <field name="arch" type="xml">
+          <tree>
+            <field name="name" />
+            <field name="description" />
+          </tree>
+        </field>
+      </record>
+  
+      <!-- Vista form -->
+      <record model="ir.ui.view" id="vista_manage_technology_form">
+        <field name="name">vista_manageangelpelli_technology_form</field>
+        <field name="model">manageangelpelli.technology</field>
+        <field name="arch" type="xml">
+          <form string="formulario_project">
+            <sheet>
+              <group name="group_top">
+                <group name="group_left">
+                  <field name="name" />
+                  <field name="description" />
+                </group>
+                <group name="group_right">
+                  <field name="image" widget="image" />
+                </group>
+              </group>
+            </sheet>
+          </form>
+        </field>
+      </record>
+
+      <!-- Acciones -->
+
+    <record model="ir.actions.act_window" id="action_manageangelpelli_technology_form">
+      <field name="name">Technologies</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">manageangelpelli.technology</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Tecnologias
+        </p>
+        <p>Click <strong> 'Crear' </strong> para añadir nuevos elementos </p>
+      </field>
+    </record>
+
+      <!-- Segundo nivel -->
+      <menuitem name="Management" id="manageangelpelli.menu_management" 
+        parent="manageangelpelli.menu_root"/>
+
+
+      <!-- actions -->
+      <menuitem name="Technologies" id="manageangelpelli.menu_technologies"
+        parent="manageangelpelli.menu_management"
+        action="action_manageangelpelli_technology_form"/>
+    </data>
+</odoo>

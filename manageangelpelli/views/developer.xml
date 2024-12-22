@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="manageangelpelli.devs_partner_form">
+            <field name="name">manage devs form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page[@name='internal_notes']" position="after">
+                    <page name="devs" string="Devs">
+                        <group>
+                            <group>
+                                <field name="technologies"></field>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="manageangelpelli.action_view_developer_tree">
+            <field name="sequence" eval="1"></field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="base.view_partner_tree"></field>
+            <field name="act_window_id" ref="manageangelpelli.action_developer_window"></field>
+        </record>
+        <record model="ir.actions.act_window.view" id="manageangelpelli.action_view_developer_form">
+            <field name="sequence" eval="2"></field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="manageangelpelli.devs_partner_form"></field>
+            <field name="act_window_id" ref="manageangelpelli.action_developer_window"></field>
+        </record>
+
+        <menuitem name="Devs" id="manageangelpelli.menu_1_devs_list"
+            parent="manageangelpelli.menu_root"
+            action="manageangelpelli.action_developer_window" />
+    </data>
+</odoo>

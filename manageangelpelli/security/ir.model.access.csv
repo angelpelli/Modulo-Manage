@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manageangelpelli_task,manageangelpelli.task,model_manageangelpelli_task,base.group_user,1,1,1,1
+access_manageangelpelli_sprint,manageangelpelli.sprint,model_manageangelpelli_sprint,base.group_user,1,1,1,1
+access_manageangelpelli_project,manageangelpelli.project,model_manageangelpelli_project,base.group_user,1,1,1,1
+access_manageangelpelli_history,manageangelpelli.history,model_manageangelpelli_history,base.group_user,1,1,1,1
+access_manageangelpelli_technology,manageangelpelli.technology,model_manageangelpelli_technology,base.group_user,1,1,1,1
