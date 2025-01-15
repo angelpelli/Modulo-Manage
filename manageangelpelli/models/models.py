@@ -1,4 +1,4 @@
-# -*- coding: utf-8-*-
+# -*- coding: utf-8 -*-
 
 import datetime
 from odoo import models, fields, api
@@ -36,10 +36,7 @@ class task(models.Model):
         return datetime.datetime.now()
     
     definition_date = fields.Datetime (default=_get_definition_date)
-
-    #definition_date = fields. Datetime(default-lambda p: datetime.datetime.now())
-    #project = fields. Many2one('manage.project', related='history.project', readonly=True)
-        
+    
 
 class sprint(models.Model):
     _name = 'manageangelpelli.sprint'
@@ -52,7 +49,7 @@ class sprint(models.Model):
     end_date = fields.Datetime(compute="_get_end_date", store=True)
 
     project=fields.Many2one("manageangelpelli.project", compute= "_get_project", string="Proyecto")
-    task=fields.One2many(string="tareas", comodel_name="manageangelpelli.task", inverse_name='sprint')
+    task= fields.One2many(string="tareas", comodel_name="manageangelpelli.task", inverse_name='sprint')
 
     @api.depends('start_date', 'duration')
     def _get_end_date(self):
@@ -108,16 +105,6 @@ class technology(models.Model):
 
     task=fields.Many2many(comodel_name = "manageangelpelli.task", relation = "technology_task", column1 = "tarea_id", column2 = "tecnologia_id")
 
-
-
-class developer (models.Model):
-    _name = 'res.partner'
-    _inherit = 'res.partner'
-
-    technologies = fields. Many2many('manageangelpelli.technology',
-                                    relation='developer_technologies',
-                                    column1='developer_id',
-                                    column2='technologies_id')
 
 
 
