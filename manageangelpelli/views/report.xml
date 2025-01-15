@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para Report -->
+        <record id="view_report_tree" model="ir.ui.view">
+            <field name="name">Report Tree</field>
+            <field name="model">manageangelpelli.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="developer_id"/>
+                    <field name="report_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Report -->
+        <record id="manageangelpelli.view_report_form" model="ir.ui.view">
+            <field name="name">Report Form</field>
+            <field name="model">manageangelpelli.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="project_id"/>
+                        <field name="developer_id"/>
+                    </group>
+                    <group>
+                        <field name="report_date"/>
+                        <field name="content" widget="text"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de búsqueda para Report -->
+        <record id="manageangelpelli.view_report_search" model="ir.ui.view">
+            <field name="name">Report Search</field>
+            <field name="model">manageangelpelli.report</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="developer_id"/>
+                    <field name="report_date"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Vista de accion-->
+        <record id="manageangelpelli.action_report_form" model="ir.actions.act_window">
+            <field name="name">Reports</field>
+            <field name="res_model">manageangelpelli.report</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Menú -->
+        <menuitem name="Report" id="manageangelpelli.menu_report"
+          parent="manageangelpelli.menu_management"
+          action="manageangelpelli.action_report_form" />
+    </data>
+</odoo>
+

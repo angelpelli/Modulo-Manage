@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para Attendance -->
+        <record id="view_attendance_tree" model="ir.ui.view">
+            <field name="name">Attendance Tree</field>
+            <field name="model">manageangelpelli.attendance</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="developer_id"/>
+                    <field name="date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Attendance -->
+        <record id="view_attendance_form" model="ir.ui.view">
+            <field name="name">Attendance Form</field>
+            <field name="model">manageangelpelli.attendance</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="developer_id"/>
+                        <field name="date"/>
+                    </group>
+                    <group>
+                        <field name="status"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de búsqueda para Attendance -->
+        <record id="view_attendance_search" model="ir.ui.view">
+            <field name="name">Attendance Search</field>
+            <field name="model">manageangelpelli.attendance</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="developer_id"/>
+                    <field name="date"/>
+                    <field name="status"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="manageangelpelli.action_attendance_form" model="ir.actions.act_window">
+            <field name="name">Asistencia</field>
+            <field name="res_model">manageangelpelli.attendance</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Asistencia" id="manageangelpelli.menu_attendance"
+          parent="manageangelpelli.menu_management"
+          action="manageangelpelli.action_attendance_form" />
+    </data>
+</odoo>

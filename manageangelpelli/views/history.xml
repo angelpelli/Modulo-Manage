@@ -23,6 +23,8 @@
                 <group name="group_left">
                   <field name="name" />
                   <field name="description" />
+                  <field name="project" />
+                  <field name="used_technologies" />
                 </group>
               </group>
             </sheet>

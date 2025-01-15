@@ -30,7 +30,12 @@
         'views/project.xml',
         'views/history.xml',
         'views/technology.xml',
-        'views/views.xml',
+        'views/developer.xml',
+        'views/report.xml',
+        'views/document.xml',
+        'views/integration.xml',
+        'views/attendance.xml',
+        'views/time_tracking.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

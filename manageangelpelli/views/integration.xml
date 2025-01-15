@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para Integration -->
+        <record id="view_integration_tree" model="ir.ui.view">
+            <field name="name">Integration Tree</field>
+            <field name="model">manageangelpelli.integration</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="tool"/>
+                    <field name="api_key"/>
+                    <field name="project_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Integration -->
+        <record id="view_integration_form" model="ir.ui.view">
+            <field name="name">Integration Form</field>
+            <field name="model">manageangelpelli.integration</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="tool"/>
+                        <field name="api_key"/>
+                        <field name="project_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+    <!-- Vista de búsqueda para Integration -->
+    <record id="view_integration_search" model="ir.ui.view">
+        <field name="name">Integration Search</field>
+        <field name="model">manageangelpelli.integration</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="tool"/>
+                <field name="project_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="manageangelpelli.action_integration_form" model="ir.actions.act_window">
+        <field name="name">Integraciones</field>
+        <field name="res_model">manageangelpelli.integration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Integraciones" id="manageangelpelli.menu_integrations"
+          parent="manageangelpelli.menu_management"
+          action="manageangelpelli.action_integration_form" />
+
+</data>
+</odoo>

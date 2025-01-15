@@ -1,0 +1,59 @@
+<odoo>
+    <data>
+        <!-- Vista de lista para Document -->
+        <record id="view_document_tree" model="ir.ui.view">
+            <field name="name">Document Tree</field>
+            <field name="model">manageangelpelli.document</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="task_id"/>
+                    <field name="project_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para Document -->
+        <record id="view_document_form" model="ir.ui.view">
+            <field name="name">Document Form</field>
+            <field name="model">manageangelpelli.document</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                    <group>
+                        <field name="file" widget="binary"/>
+                        <field name="task_id"/>
+                        <field name="project_id"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista de búsqueda para Document -->
+        <record id="view_document_search" model="ir.ui.view">
+            <field name="name">Document Search</field>
+            <field name="model">manageangelpelli.document</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="task_id"/>
+                    <field name="project_id"/>
+                </search>
+            </field>
+        </record>
+        <!-- Accion-->
+        <record id="manageangelpelli.action_document_form" model="ir.actions.act_window">
+            <field name="name">Documentos</field>
+            <field name="res_model">manageangelpelli.document</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- menu-->
+        <menuitem name="Documentos" id="manageangelpelli.menu_documents"
+          parent="manageangelpelli.menu_management"
+          action="manageangelpelli.action_document_form" />
+    </data>
+</odoo>
