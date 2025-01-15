@@ -1,3 +1,5 @@
+https://github.com/angelpelli/Modulo-Manage/blob/main/Pellitero_Bellido_Angel_proyectomanage.pdf
+
 # Desarrollo del módulo “manage” con Odoo ERP; para gestionar proyectos usando metodologías ágiles: scrum
 
 ## Descripción del proyecto
