@@ -169,12 +169,93 @@ class Integration(models.Model):
     project_id = fields.Many2one('manageangelpelli.project', string="Proyecto", required=True)
  
     def sync_tasks_with_jira(self):
-        # Lógica para sincronizar tareas con Jira
-        pass
- 
+        """
+        Sincroniza las tareas del proyecto con Jira.
+        """
+        for integration in self:
+            if integration.tool == 'jira':
+                jira_url = "https://your-jira-instance.atlassian.net/rest/api/3/issue"
+                headers = {
+                    "Authorization": f"Bearer {integration.api_key}",
+                    "Content-Type": "application/json"
+                }
+
+                # Obtener tareas del proyecto en Odoo
+                tasks = self.env['manageangelpelli.task'].search([('project.id', '=', integration.project_id.id)])
+
+                for task in tasks:
+                    # Crear o actualizar tarea en Jira
+                    payload = {
+                        "fields": {
+                            "project": {
+                                "key": integration.project_id.name.upper()
+                            },
+                            "summary": task.name,
+                            "description": task.description,
+                            "issuetype": {
+                                "name": "Task"
+                            }
+                        }
+                    }
+
+                    response = requests.post(jira_url, headers=headers, data=json.dumps(payload))
+
+                    if response.status_code == 201:
+                        task.write({'external_id': response.json().get('id')})
+                    else:
+                        raise Warning(f"Error al sincronizar la tarea {task.name} con Jira: {response.text}")
+
     def send_slack_notification(self, message):
-        # Lógica para enviar notificaciones a Slack
-        pass
+        """
+        Envía una notificación a un canal de Slack.
+        """
+        for integration in self:
+            if integration.tool == 'slack':
+                slack_url = "https://slack.com/api/chat.postMessage"
+                headers = {
+                    "Authorization": f"Bearer {integration.api_key}",
+                    "Content-Type": "application/json"
+                }
+
+                payload = {
+                    "channel": "#general",  # Cambiar al canal deseado
+                    "text": message
+                }
+
+                response = requests.post(slack_url, headers=headers, data=json.dumps(payload))
+
+                if response.status_code != 200:
+                    raise Warning(f"Error al enviar notificación a Slack: {response.text}")
+
+    def sync_with_github(self):
+        """
+        Sincroniza las tareas del proyecto con GitHub Issues.
+        """
+        for integration in self:
+            if integration.tool == 'github':
+                github_url = f"https://api.github.com/repos/{integration.project_id.name}/issues"
+                headers = {
+                    "Authorization": f"token {integration.api_key}",
+                    "Accept": "application/vnd.github.v3+json"
+                }
+
+                # Obtener tareas del proyecto en Odoo
+                tasks = self.env['manageangelpelli.task'].search([('project.id', '=', integration.project_id.id)])
+
+                for task in tasks:
+                    # Crear o actualizar issue en GitHub
+                    payload = {
+                        "title": task.name,
+                        "body": task.description,
+                        "labels": ["task"]
+                    }
+
+                    response = requests.post(github_url, headers=headers, data=json.dumps(payload))
+
+                    if response.status_code == 201:
+                        task.write({'external_id': response.json().get('id')})
+                    else:
+                        raise Warning(f"Error al sincronizar la tarea {task.name} con GitHub: {response.text}")
  
 #Nuevo modelo para gestionar la documentación relacionada con proyectos, tareas y tecnologías.
 class Document(models.Model):
