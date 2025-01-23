@@ -23,6 +23,7 @@
                 <group name="group_left">
                   <field name="name" />
                   <field name="description" />
+                  <field name="task"/>
                 </group>
                 <group name="group_right">
                   <field name="image" widget="image" />

@@ -28,6 +28,7 @@
                   <field name="duration"/>
                   <field name="start_date"/>
                   <field name="end_date"/>
+                  <field name="task"/>
                 </group>
               </group>
             </sheet>

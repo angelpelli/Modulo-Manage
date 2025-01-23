@@ -20,12 +20,11 @@
           <form string="formulario_history">
             <sheet>
               <group name="group_top">
-                <group name="group_left">
-                  <field name="name" />
-                  <field name="description" />
-                  <field name="project" />
-                  <field name="used_technologies" />
-                </group>
+                <field name="name" />
+                <field name="description" />
+                <field name="project" />
+                <field name="task"/>
+                <field name="used_technologies" />
               </group>
             </sheet>
           </form>

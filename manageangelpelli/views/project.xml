@@ -23,6 +23,8 @@
                 <group name="group_left">
                   <field name="name" />
                   <field name="description" />
+                  <field name="history"/>
+                  <field name="sprint"/>
                 </group>
               </group>
             </sheet>
